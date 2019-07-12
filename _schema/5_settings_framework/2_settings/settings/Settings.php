@@ -53,9 +53,6 @@ class Settings
      ];
 
 
-     /* private $foo = 'foo'; */
-
-
      /**
       * Settings constructor.
       *
@@ -100,7 +97,6 @@ class Settings
      * array_merge_recursive() умеет обработать многомерно массив
      *
      * @param $class [ Name of class settings must to set ]
-     * @return array
      */
      public function clueProperties($class)
      {
@@ -113,53 +109,13 @@ class Settings
 
               if(is_array($property) && is_array($item))
               {
-                     $baseProperties[$name] = $this->arrayMergeRecursive($this->{$name}, $property);
-                     continue;
-              }
-
-              if(!$property) $baseProperties[$name] = $this->{$name};
-          }
-
-
-          return $baseProperties;
-     }
-
-
-     /**
-      * Array Merge recursive
-      *
-      * @return mixed
-     */
-     public function arrayMergeRecursive()
-     {
-          $arrays = func_get_args();
-
-          $base = array_shift($arrays);
-
-          foreach ($arrays as $array)
-          {
-              foreach ($array as $key => $value)
-              {
-                   if(is_array($value) && is_array($base[$key]))
-                   {
-                        $base[$key] = $this->arrayMergeRecursive($base[$key], $value);
-
-                   }else{
-
-                        // если номерован массив
-                        if(is_int($key))
-                        {
-                             if(!in_array($value, $base)) array_push($base, $value);
-                             continue;
-                        }
-
-                        $base[$key] = $value;
-                   }
+                   /* $baseProperties[$name] = array_merge_recursive($this->{$name}, $property); */
+                  $baseProperties[$name] = array_replace_recursive($this->{$name}, $property);
               }
           }
 
-          return $base;
+
+          debug($baseProperties);
+          exit();
      }
-
-
 }

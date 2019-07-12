@@ -63,10 +63,7 @@ class RouteController
      private function __construct()
      {
          $settings  = Settings::get('routes'); // debug($setting)
-         $shopSettings = ShopSettings::get('routes');
-
-         debug($settings);
-         debug($shopSettings);
+         $shopSettings = ShopSettings::get('property');
 
          exit();
      }

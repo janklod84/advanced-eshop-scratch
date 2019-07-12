@@ -1,0 +1,82 @@
+Array
+(
+    [admin] => Array
+        (
+            [name] => admin
+            [path] => core/admin/controllers/
+            [hrUrl] =>
+        )
+
+    [settings] => Array
+        (
+            [path] => core/base/settings/
+        )
+
+    [plugins] => Array
+        (
+            [path] => core/plugins/
+            [hrUrl] =>
+        )
+
+    [user] => Array
+        (
+            [path] => core/user/controllers/
+            [hrUrl] =>
+            [routes] => Array
+                (
+                )
+
+        )
+
+    [default] => Array
+        (
+            [controller] => IndexController
+            [inputMethod] => inputData
+            [outputMethod] => outputData
+        )
+
+)
+
+Array
+(
+    [admin] => Array
+        (
+            [name] => admin
+            [path] => core/admin/controllers/
+            [hrUrl] =>
+        )
+
+    [settings] => Array
+        (
+            [path] => core/base/settings/
+        )
+
+    [plugins] => Array
+        (
+            [path] => core/plugins/
+            [hrUrl] =>
+        )
+
+    [user] => Array
+        (
+            [path] => core/user/controllers/
+            [hrUrl] =>
+            [routes] => Array
+                (
+                )
+
+        )
+
+    [default] => Array
+        (
+            [controller] => IndexController
+            [inputMethod] => inputData
+            [outputMethod] => outputData
+        )
+
+    [site] => Array
+        (
+            [name] => site
+        )
+
+)
