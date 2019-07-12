@@ -21,7 +21,7 @@ defined('VG_ACCESS') or die('Access denied');
  * Констант безопасности
  */
 const TEMPLATE = 'templates/default/';
-const ADMIN_TEMPLATE = 'core/admin/views/';
+const ADMIN_TEMPLATE = 'core/admin/view/';
 
 
 /**

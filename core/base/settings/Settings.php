@@ -21,8 +21,8 @@ class Settings
      */
      private $routes = [
          'admin' => [
-            'name' => 'admin',
-            'path' => 'core/admin/controllers/',
+            'alias' => 'admin',
+            'path' => 'core/admin/controller/',
             'hrUrl' => false, // Human realeable URL [ ЧПУ ]
          ],
          'settings' => [
@@ -33,10 +33,10 @@ class Settings
              'hrUrl' => false, // Human realeable URL [ ЧПУ ]
          ],
          'user' => [
-             'path'   => 'core/user/controllers/',
+             'path'   => 'core/user/controller/',
              'hrUrl'  => false, // Human realeable URL [ ЧПУ ]
              'routes' => [
-
+                 'catalog' => 'site' // controller name : SiteController
              ]
          ],
          'default' => [

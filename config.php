@@ -15,7 +15,7 @@ defined('VG_ACCESS') or die('Access denied');
 
 // Path
 const SITE_URL = 'http://shop.loc';
-const PATH = '/';
+const PATH = '/'; // dir/admin/...
 
 // Database
 const HOST = 'localhost';
