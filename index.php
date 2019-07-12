@@ -25,3 +25,22 @@ session_start();
  */
 require_once 'config.php';
 require_once  'core/base/settings/internal_settings.php';
+
+
+
+/**
+ * Autoloading classes
+ */
+
+
+function load1($class_name)
+{
+    $class_name = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);
+    include $class_name . '.php';
+}
+
+
+spl_autoload_register('load1');
+
+(new \n1\A());
+(new \n2\A());

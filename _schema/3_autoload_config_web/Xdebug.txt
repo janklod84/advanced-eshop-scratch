@@ -1,0 +1,36 @@
+OPENServer
+=============================================================
+d:\ospanel\userdata\config\PHP-5.6_php.ini
+
+[Xdebug]
+# COMMENTE
+;zend_extension="%sprogdir%/modules/php/%phpdriver%/ext/php_xdebug.dll"
+;xdebug.default_enable = 1
+
+# COMMENT
+;xdebug.remote_enable = 1
+
+# COMMENT
+;xdebug.remote_port = 9000
+
+
+# DECOMMENTE OBLIGATOIREMENT
+zend_extension="%sprogdir%/modules/php/%phpdriver%/ext/php_xdebug.dll"
+xdebug.default_enable = 1
+
+# DECOMMENTE
+xdebug.remote_enable = 1
+
+# DECOMMENTE
+xdebug.remote_port = 9000
+
+
+===================================================
+PHPStorm
+
+File
+ - Settings
+    Languages & Frameworks
+      - раздел PHP
+
+    https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
