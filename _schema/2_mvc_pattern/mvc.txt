@@ -1,0 +1,6 @@
+
+CLIENT:
+URL : site.loc/test   ====> Controller [RESPONSABLE OF LOGIC STRUCTURE] ==> Models [RESPONSABLE OF DATA] ===> Данные
+                              ||
+                              ||
+                    Вид 1, Вид 2, Страница 404 ... [ RESPONSABLE TO SHOW DATA ]
