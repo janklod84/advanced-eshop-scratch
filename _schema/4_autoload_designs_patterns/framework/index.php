@@ -34,8 +34,7 @@ use core\base\controllers\RouteController;
 
 try
 {
-    // Мост приложения
-    RouteController::getInstance()->route();
+    // RouteController::getInstance()->route();
 
 }catch (RouteException $e){
 
