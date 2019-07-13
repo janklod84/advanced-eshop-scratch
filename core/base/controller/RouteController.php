@@ -94,6 +94,7 @@ class RouteController
           *
           * мы должны перенаправить пользователь на страницу без этого симбола
           */
+         // strrpos() ищем последние хождения по строки
          if(strrpos($adress_str, '/') === (strlen($adress_str) -1) && strrpos($adress_str, '/') !== 0)
          {
              // мы должны перенаправить пользователь на страницу без этого симбола
@@ -127,14 +128,49 @@ class RouteController
               * если это административный панель значит нам надо разбевать
               * строк относительно админ панель
               */
-             if(strrpos($adress_str, $this->routes['admin']['alias']) === strlen(PATH))
+             // strpos() ищем первое ождения по строки
+             if(strpos($adress_str, $this->routes['admin']['alias']) === strlen(PATH))
              {
+                 // ADMIN [ http://shop.loc/admin/shop/controller/inputMethod..
+                 $url = explode('/', substr($adress_str, strlen(PATH . $this->routes['admin']['alias']) + 1));
 
-                 // ADMIN
+                 // full path to plugins
+                 $plugin_path = $_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0];
+                 if($url[0] && is_dir($plugin_path)) // если plugin
+                 {
+                     // вытаскиваем перевый элемент с массива
+                     $plugin = array_shift($url);
+
+                     // получить настроеки плагина ]
+                     $pluginSettings = $this->routes['settings']['path'] . ucfirst($plugin . 'Settings');
+
+                     if(file_exists($_SERVER['DOCUMENT_ROOT'] . PATH . $pluginSettings . '.php'))
+                     {
+                         $pluginSettings = str_replace('/', '\\', $pluginSettings);
+                         $this->routes = $pluginSettings::get('routes');
+                     }
+
+                     $dir = $this->routes['plugins']['dir'] ? '/' . $this->routes['plugins']['dir'] . '/' : '/';
+                     $dir = str_replace('//', '/', $dir);
+
+                     $this->controller = $this->routes['plugins']['path'] . $plugin . $dir;
+
+                     $hrUrl = $this->routes['plugins']['hrUrl'];
+
+                     $route = 'plugins';
+
+                 }else{ // если не plugin
+
+                     $this->controller = $this->routes['admin']['path'];
+
+                     $hrUrl = $this->routes['admin']['hrUrl'];
+
+                     $route = 'admin';
+                 }
 
              }else{
 
-                 // USER
+                 // USER [ http://shop.loc/catalog/phone
                   $url = explode('/', substr($adress_str, strlen(PATH)));
 
                   $hrUrl = $this->routes['user']['hrUrl']; // апределяет исползовать ЧПУ или нет
@@ -144,10 +180,44 @@ class RouteController
                   $route = 'user';
              }
 
-             // Создатель маршруты
+             // Создание маршрутов
              $this->createRoute($route, $url);
 
 
+             // Создание набор параметров адресные строки
+             // shop.loc/news/title-of-news-1/color/red/id/4
+
+             if($url[1])
+             {
+                 $count = count($url);
+                 $key = '';
+
+                 // если работаем без ЧПУ
+                 if(!$hrUrl)
+                 {
+                     $i = 1;
+                 }else{
+                     $this->parameters['alias'] = $url[1];
+                     $i = 2;
+                 }
+
+                 /**
+                  * for($i = 0; $i < count($count); $i++) { }
+                  * $i будет доступно для следущего записа
+                  * при таком записе for(; $i < $count; $i++) { }
+                  */
+                 for(; $i < $count; $i++)
+                 {
+                    if(!$key)
+                    {
+                        $key = $url[$i];
+                        $this->parameters[$key] = '';
+                    }else{
+                        $this->parameters[$key] = $url[$i];
+                        $key = '';
+                    }
+                 }
+             }
              exit();
 
          }else{
@@ -174,7 +244,6 @@ class RouteController
     private function createRoute($var, $arr)
     {
         $route = [];
-
 
         // контроллер
         if(!empty($arr[0]))

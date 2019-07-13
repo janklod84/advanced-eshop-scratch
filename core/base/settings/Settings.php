@@ -31,6 +31,7 @@ class Settings
          'plugins' => [
              'path'  => 'core/plugins/',
              'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+             'dir'   => false
          ],
          'user' => [
              'path'   => 'core/user/controller/',

@@ -24,12 +24,31 @@ class ShopSettings
     /**
      * @var array $routes
      */
+    /*
     private $routes = [
         'admin' => [
             'name' => 'sudo'
         ],
         'vasya' => [
             'name' => 'vasya'
+        ]
+    ];
+    */
+
+    /**
+     * @var array $routes
+     * dir => controller
+     * можно писать так controller/, /controller, или false если нам не нужно dir
+     */
+    private $routes = [
+        'plugins' => [
+            'path'  => 'core/plugins/',
+            'hrUrl' => false, // актировать ЧПУ или нет
+            'dir'   => 'controller',
+            'routes' => [
+
+
+            ]
         ]
     ];
 
