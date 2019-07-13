@@ -45,7 +45,10 @@ class ShopSettings
             'path'  => 'core/plugins/',
             'hrUrl' => false, // актировать ЧПУ или нет
             'dir'   => 'controller',
-            'routes' => []
+            'routes' => [
+
+
+            ]
         ]
     ];
 

@@ -37,8 +37,7 @@ class Settings
              'path'   => 'core/user/controller/',
              'hrUrl'  => false, // Human realeable URL [ ЧПУ ]
              'routes' => [
-                    'catalog' => 'site', # controller name : SiteController
-                 // 'catalog' => 'site/hello/hi', // site/hello/hi
+                 'catalog' => 'site' // controller name : SiteController
              ]
          ],
          'default' => [

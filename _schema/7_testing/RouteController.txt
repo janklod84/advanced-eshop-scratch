@@ -1,0 +1,213 @@
+URL : http://shop.loc/
+$routeController = new controller\RouteController();
+debug($routeController);
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [catalog] => site
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/user/controller/IndexController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] =>
+)
+
+
+==============================================================================
+URL = http://shop.loc/catalog
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [catalog] => site
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/user/controller/SiteController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] =>
+)
+
+==============================================================================
+URL = http://shop.loc/catalog1
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [catalog] => site
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/user/controller/Catalog1Controller
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] =>
+)
+
+==============================================================================
+URL = http://shop.loc/catalog/iphone-6s
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [catalog] => site
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/user/controller/SiteController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [iphone-6s] =>
+        )
+
+)
+

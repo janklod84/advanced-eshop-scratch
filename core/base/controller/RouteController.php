@@ -37,7 +37,7 @@ class RouteController
      protected $controller;
      protected $inputMethod;
      protected $outputMethod;
-     protected $parameters;
+     protected $parameters = [];
 
 
 
@@ -51,13 +51,12 @@ class RouteController
      private function __clone() {}
 
 
-
-
     /**
-      * Get instance
-      *
-      *
-      * @return self
+     * Get instance
+     *
+     *
+     * @return self
+     * @throws Exception
      */
      static public function getInstance()
      {
@@ -95,14 +94,14 @@ class RouteController
           * мы должны перенаправить пользователь на страницу без этого симбола
           */
          // strrpos() ищем последние хождения по строки
-         if(strrpos($adress_str, '/') === (strlen($adress_str) -1) && strrpos($adress_str, '/') !== 0)
+         if(strrpos($adress_str, '/') === strlen($adress_str) -1 && strrpos($adress_str, '/') !== 0)
          {
              // мы должны перенаправить пользователь на страницу без этого симбола
              $this->redirect(rtrim($adress_str, '/'), 301); // 301 response code
          }
 
          // в переменная $path сохраним обрезаны строку в которой содержан имя выпольнения скрипта
-         $path = substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], 'index.php'));
+         $path = substr($_SERVER['PHP_SELF'], 0, strpos($_SERVER['PHP_SELF'], 'index.php'));
 
 
          // если $path совпадает с нашем определен констант PATH то будем запускать преложение
@@ -176,7 +175,6 @@ class RouteController
                   $hrUrl = $this->routes['user']['hrUrl']; // апределяет исползовать ЧПУ или нет
 
                   $this->controller = $this->routes['user']['path'];
-
                   $route = 'user';
              }
 
@@ -206,7 +204,7 @@ class RouteController
                   * $i будет доступно для следущего записа
                   * при таком записе for(; $i < $count; $i++) { }
                   */
-                 for(; $i < $count; $i++)
+                 for( ; $i < $count; $i++)
                  {
                     if(!$key)
                     {
@@ -218,6 +216,8 @@ class RouteController
                     }
                  }
              }
+
+             debug($this);
              exit();
 
          }else{
@@ -256,7 +256,7 @@ class RouteController
 
             }else{
 
-                $this->controller .= ucfirst($route[0]). 'Controller';
+                $this->controller .= ucfirst($arr[0]). 'Controller';
             }
 
         }else{
