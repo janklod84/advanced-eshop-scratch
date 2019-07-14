@@ -40,13 +40,15 @@ class ShopSettings
      * dir => controller
      * можно писать так controller/, /controller, или false если нам не нужно dir
      */
-
     private $routes = [
         'plugins' => [
-            'dir'   => false,
+            'path'  => 'core/plugins/',
+            'hrUrl' => false, // актировать ЧПУ или нет
+            'dir'   => 'controller',
             'routes' => []
         ]
     ];
+
 
     /**
      * @var array $templateArr ['name', 'phone', 'adress', 'price', 'short'],

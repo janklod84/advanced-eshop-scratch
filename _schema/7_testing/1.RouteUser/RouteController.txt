@@ -156,6 +156,65 @@ core\base\controller\RouteController Object
 )
 
 ==============================================================================
+URL = http://shop.loc/catalog/link/page/2
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/user/controller/SiteController
+    [inputMethod:protected] => hello
+    [outputMethod:protected] => by
+    [parameters:protected] => Array
+        (
+            [alias] => link
+            [page] => 2
+        )
+
+)
+
+
+
+==============================================================================
 URL = http://shop.loc/catalog/iphone-6s
 
 core\base\controller\RouteController Object

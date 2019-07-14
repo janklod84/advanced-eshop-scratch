@@ -222,12 +222,9 @@ class RouteController
                  }
              }
 
-             /*
-                var_dump($this->parameters);
-                debug($this);
-                exit();
-             */
-
+             /* var_dump($this->parameters); */
+             debug($this);
+             exit();
 
          }else{
 
@@ -257,9 +254,9 @@ class RouteController
         // контроллер
         if(!empty($arr[0]))
         {
-            if($this->routes[$var]['routes'][$arr[0]])
+            if($alias = $this->routes[$var]['routes'][$arr[0]])
             {
-                 $route = explode('/', $this->routes[$var]['routes'][$arr[0]]);
+                 $route = explode('/', $alias);
 
                  $this->controller .= ucfirst($route[0]. 'Controller');
 

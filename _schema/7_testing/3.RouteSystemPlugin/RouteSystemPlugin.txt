@@ -1,0 +1,433 @@
+
+URL: http://shop.loc/admin/shop
+
+ShopSettings:
+private $routes = [
+     'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+     ]
+];
+
+Settings:
+private $routes = [
+   'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+    ]
+];
+
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/plugins/shop/IndexController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] =>
+)
+
+======================================================================
+
+URL: shop.loc/admin/shop/product/id/1
+
+ShopSettings:
+private $routes = [
+     'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+     ]
+];
+
+Settings:
+private $routes = [
+   'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+    ]
+];
+
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/plugins/shop/ProductController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [id] => 1
+        )
+
+)
+====================================================================
+
+URL: http://shop.loc/admin/shop/product/id/1
+
+
+ShopSettings:
+private $routes = [
+     'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+     ]
+];
+
+Settings:
+private $routes = [
+   'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+    ]
+];
+
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] => controller
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/plugins/shop/controller/ProductController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [id] => 1
+        )
+
+)
+
+==============================================
+
+ShopSettings:
+/*
+private $routes = [
+     'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+     ]
+];
+*/
+
+private $routes = [
+        'plugins' => [
+            'path'  => 'lalala/', // 'core/plugins/',
+            'hrUrl' => false, // актировать ЧПУ или нет
+            'dir'   => 'controller', // ''
+            'routes' => []
+        ]
+    ];
+
+
+Settings:
+private $routes = [
+   'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+    ]
+];
+
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => lalala/
+                    [hrUrl] =>
+                    [dir] => controller
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => lalala/shop/controller/ProductController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [id] => 1
+        )
+
+)
+
+=================================================================
+
+URL: http://shop.loc/admin/shop/product/id/1
+
+private $routes = [
+    'plugins' => [
+        'dir'   => 'controller',
+        'routes' => [
+            'product' => 'goods'
+        ]
+    ]
+];
+
+
+private $routes = [
+     'admin' => [
+        'alias' => 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => []
+     ]
+];
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                        )
+
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] => controller
+                    [routes] => Array
+                        (
+                            [product] => goods
+                        )
+
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/plugins/shop/controller/GoodsController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [id] => 1
+        )
+
+)

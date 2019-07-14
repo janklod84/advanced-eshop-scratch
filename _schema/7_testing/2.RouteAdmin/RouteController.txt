@@ -1,0 +1,320 @@
+URL: http://shop.loc/admin
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [catalog] => site
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/admin/controller/IndexController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] =>
+)
+
+===================================================
+
+http://shop.loc/admin/product/id/1/page/2
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => admin
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [catalog] => site
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/admin/controller/ProductController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [id] => 1
+            [page] => 2
+        )
+
+)
+
+=======================================================================
+
+URL: http://shop.loc/admin/product/id/1/page/2
+
+Когда Settings:
+private $routes = [
+ 'admin' => [
+    'alias' => 'sudo', // 'admin',
+    'path' => 'core/admin/controller/',
+    'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+ ],
+];
+
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => sudo
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/user/controller/AdminController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [alias] => product
+            [id] => 1
+            [page] => 2
+        )
+
+)
+
+=================================================================
+
+URL: http://shop.loc/sudo/product/id/1/page/2
+
+Когда Settings :
+private $routes = [
+ 'admin' => [
+    'alias' => 'sudo', // 'admin',
+    'path' => 'core/admin/controller/',
+    'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+ ],
+];
+
+
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => sudo
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/admin/controller/ProductController
+    [inputMethod:protected] => inputData
+    [outputMethod:protected] => outputData
+    [parameters:protected] => Array
+        (
+            [id] => 1
+            [page] => 2
+        )
+
+)
+
+
+===================================================================
+URL: http://shop.loc/sudo/product/id/1/page/2
+Settings:
+private $routes = [
+     'admin' => [
+        'alias' => 'sudo', // 'admin',
+        'path' => 'core/admin/controller/',
+        'hrUrl' => false, // Human realeable URL [ ЧПУ ]
+         'routes' => [
+             'product' => 'goods/getGoods/sale'
+         ]
+     ]
+];
+
+core\base\controller\RouteController Object
+(
+    [routes:protected] => Array
+        (
+            [admin] => Array
+                (
+                    [alias] => sudo
+                    [path] => core/admin/controller/
+                    [hrUrl] =>
+                    [routes] => Array
+                        (
+                            [product] => goods/getGoods/sale
+                        )
+
+                )
+
+            [settings] => Array
+                (
+                    [path] => core/base/settings/
+                )
+
+            [plugins] => Array
+                (
+                    [path] => core/plugins/
+                    [hrUrl] =>
+                    [dir] =>
+                )
+
+            [user] => Array
+                (
+                    [path] => core/user/controller/
+                    [hrUrl] => 1
+                    [routes] => Array
+                        (
+                            [catalog] => site/hello/by
+                        )
+
+                )
+
+            [default] => Array
+                (
+                    [controller] => IndexController
+                    [inputMethod] => inputData
+                    [outputMethod] => outputData
+                )
+
+        )
+
+    [controller:protected] => core/admin/controller/GoodsController
+    [inputMethod:protected] => getGoods
+    [outputMethod:protected] => sale
+    [parameters:protected] => Array
+        (
+            [id] => 1
+            [page] => 2
+        )
+
+)

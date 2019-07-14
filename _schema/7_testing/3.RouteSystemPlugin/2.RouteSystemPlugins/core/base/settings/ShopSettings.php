@@ -43,7 +43,9 @@ class ShopSettings
 
     private $routes = [
         'plugins' => [
-            'dir'   => false,
+            'path'  => 'lalala/', // 'core/plugins/',
+            'hrUrl' => false, // актировать ЧПУ или нет
+            'dir'   => 'controller', // ''
             'routes' => []
         ]
     ];

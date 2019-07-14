@@ -24,7 +24,6 @@ class Settings
             'alias' => 'admin',
             'path' => 'core/admin/controller/',
             'hrUrl' => false, // Human realeable URL [ ЧПУ ]
-             'routes' => []
          ],
          'settings' => [
              'path' => 'core/base/settings/'
@@ -34,11 +33,14 @@ class Settings
              'hrUrl' => false, // Human realeable URL [ ЧПУ ]
              'dir'   => false
          ],
-         // В пользовским часть нужно всегда ЧПУ т.е поэтому включим его вставим TRUE
          'user' => [
              'path'   => 'core/user/controller/',
              'hrUrl'  => true, // Human realeable URL [ ЧПУ ]
-             'routes' => []
+             'routes' => [
+                    // 'catalog' => 'site', # controller name : SiteController
+                 // 'catalog' => 'site/hello/hi', // site/hello/hi
+                 'catalog' => 'site/hello/by'
+             ]
          ],
          'default' => [
              'controller'   => 'IndexController',
