@@ -18,7 +18,7 @@ use \Exception;
  *
  * @package core\base\controller
  */
-class RouteController
+class RouteController extends BaseController
 {
 
     /**
@@ -28,18 +28,8 @@ class RouteController
 
     /**
      * @var array $routes        [ all routes ]
-     * @var string $controller   [ controller name ]
-     * @var string $inputMethod  [ action name ]
-     * @var string $outputMethod [ for view ]
-     * @var array  $parameters   [ params from url ]
      */
      protected $routes;
-     protected $controller;
-     protected $inputMethod;
-     protected $outputMethod;
-     protected $parameters;
-
-
 
 
 
@@ -117,6 +107,10 @@ class RouteController
              }
 
 
+             // USER [ http://shop.loc/catalog/phone
+             $url = explode('/', substr($adress_str, strlen(PATH)));
+
+
              /**
               * USER URL : http://shop.loc/catalog/phone
               * ADMIN URL: http://shop.loc/admin/shop/catalog/phone [ admin: directory of admin, shop: name of plugin..]
@@ -128,10 +122,12 @@ class RouteController
               * строк относительно админ панель
               */
              // strpos() ищем первое ождения по строки
-             if(strpos($adress_str, $this->routes['admin']['alias']) === strlen(PATH))
+             if($url[0] && $url[0] === $this->routes['admin']['alias'])
              {
-                 // ADMIN [ http://shop.loc/admin/shop/controller/inputMethod..
-                 $url = explode('/', substr($adress_str, strlen(PATH . $this->routes['admin']['alias']) + 1));
+
+                 // удалить первый элемент с массива
+                 array_shift($url);
+
 
                  // full path to plugins
                  $plugin_path = $_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0];
@@ -170,8 +166,6 @@ class RouteController
 
              }else{
 
-                 // USER [ http://shop.loc/catalog/phone
-                  $url = explode('/', substr($adress_str, strlen(PATH)));
 
                   $hrUrl = $this->routes['user']['hrUrl']; // апределяет исползовать ЧПУ или нет
 
@@ -221,12 +215,6 @@ class RouteController
                     }
                  }
              }
-
-             /*
-                var_dump($this->parameters);
-                debug($this);
-                exit();
-             */
 
 
          }else{
