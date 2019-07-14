@@ -38,9 +38,7 @@ class Settings
          'user' => [
              'path'   => 'core/user/controller/',
              'hrUrl'  => true, // Human realeable URL [ ЧПУ ]
-             'routes' => [
-                 //'site' => 'index/hello' // [ IndexController , hello ]
-             ]
+             'routes' => []
          ],
          'default' => [
              'controller'   => 'IndexController',
