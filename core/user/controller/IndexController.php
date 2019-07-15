@@ -14,30 +14,10 @@ class IndexController extends BaseController
 {
 
     /**
-     * http://shop.loc/site/hello
-     *
-     * $routes = [
-     *   'user' => [
-     *      'routes' => [
-     *         'site' => 'index/hello'
-     *      ]
-     *   ]
-     * ];
-     * @throws \ReflectionException
-     */
-    /*
-     protected function hello()
-     {
-         $template = $this->render(false, ['name' => 'Иван']);
-
-         exit($template);
-     }
-    */
-
-    /**
      * @var string $name
      */
     protected $name;
+
 
 
     /**
@@ -48,40 +28,20 @@ class IndexController extends BaseController
      */
     protected function inputData()
     {
-         $name = 'Иван';
-         $content = $this->render('', compact('name'));
-         $header  = $this->render(TEMPLATE . 'header');
-         $footer  = $this->render(TEMPLATE . 'footer');
-         return compact('header', 'content', 'footer');
-    }
 
+         /**
+         debug($this);
+         $this->init();
 
-    /**
-     * Output Data
-     *
-     * @throws \ReflectionException
-     * @throws \core\base\exceptions\RouteException
-     */
-    /*
-    protected function outputData()
-    {
-         /*
-          * exit($this->render());
-          * exit($this->render('', ['name' => $this->name]));
+          ============================
+
+         $num = '1'; // 1: int, 1.5: float, '1': string
+         $num = $this->clearNum($num);
           *
-          * exit($this->render('', $vars));
-          */
-
-         /*
-         1 - METHOD
-         $vars = func_get_arg(0);
-         return $vars;
-
-
-         // 2 -METHOD
-         $vars = func_get_arg(0);
-
-         return $this->render(TEMPLATE.'templater', $vars);
-    }
          */
+
+         $post = $this->isPost();
+         exit();
+    }
+
 }

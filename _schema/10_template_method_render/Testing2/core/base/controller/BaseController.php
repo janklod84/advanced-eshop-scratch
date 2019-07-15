@@ -14,12 +14,6 @@ use core\base\settings\Settings;
 abstract class BaseController
 {
 
-
-    // Trait
-    use \core\base\controller\BaseMethods;
-
-
-
     /**
      * @var string $page
      * @var array  $errors
