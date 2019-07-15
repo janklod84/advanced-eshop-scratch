@@ -48,11 +48,12 @@ class IndexController extends BaseController
      */
     protected function inputData()
     {
-         $name = 'Иван';
-         $content = $this->render('', compact('name'));
-         $header  = $this->render(TEMPLATE . 'header');
-         $footer  = $this->render(TEMPLATE . 'footer');
-         return compact('header', 'content', 'footer');
+        // $this->name = 'Masha';
+        $name = 'Masha';
+        $surname = 'Ivanova';
+
+
+        return compact('name', 'surname');
     }
 
 
@@ -62,26 +63,13 @@ class IndexController extends BaseController
      * @throws \ReflectionException
      * @throws \core\base\exceptions\RouteException
      */
-    /*
     protected function outputData()
     {
-         /*
-          * exit($this->render());
-          * exit($this->render('', ['name' => $this->name]));
-          *
-          * exit($this->render('', $vars));
-          */
+        // exit($this->render());
+        // exit($this->render('', ['name' => $this->name]));
 
-         /*
-         1 - METHOD
-         $vars = func_get_arg(0);
-         return $vars;
+        $vars = func_get_arg(0);
+        exit($this->render('', $vars));
 
-
-         // 2 -METHOD
-         $vars = func_get_arg(0);
-
-         return $this->render(TEMPLATE.'templater', $vars);
     }
-         */
 }

@@ -3,8 +3,6 @@ namespace core\base\controller;
 
 
 use core\base\exceptions\RouteException;
-use core\base\settings\Settings;
-
 
 /**
  * Class BaseController
@@ -80,19 +78,17 @@ abstract class BaseController
         $inputData  = $args['inputMethod'];
         $outputData = $args['outputMethod'];
 
-        $data = $this->{$inputData}();
 
-        if(method_exists($this, $outputData))
-        {
-            $page = $this->{$outputData}($data);
-            if($page) {
-                $this->page = $page;
-            }
+        // $this->{$inputMethod}();
+        // call_user_func([$this, $inputData]); [ Method Before Render ]
+        $this->{$inputData}();
 
-        }elseif ($data){
 
-            $this->page = $data;
-        }
+        // Сохраняем результат обработки выполнения выходного метода в переменную $page
+        // это будет результат $page
+        // $this->page = $this->{$outputMethod}();
+        // call_user_func([$this, $outputData]);
+        $this->page = $this->{$outputData}();
 
         // если в ошибке что то есть
         if($this->errors)
@@ -114,41 +110,24 @@ abstract class BaseController
      */
     protected function render($path = '', $parameters = [])
     {
-         extract($parameters);
+        extract($parameters);
 
-         if(!$path)
-         {
-             // класс Reflexion
-             $class = new \ReflectionClass($this);
+        if(!$path)
+        {
+            $reflectedClass = new \ReflectionClass($this);
+            $path = TEMPLATE . explode('controller', strtolower($reflectedClass->getShortName()))[0];
+        }
 
-             // получаем постранство имен
-             $space  = str_replace('\\', '/', $class->getNamespaceName() . '\\');
-             $routes = Settings::get('routes');
+        // Открываем буфер обмена
+        ob_start();
 
+        if(!@include_once $path . '.php')
+        {
+            throw new RouteException('Отсутствует шаблон - ' . $path);
+        }
 
-             if($space === $routes['user']['path'])
-             {
-                 $template = TEMPLATE;
-
-             }else{
-
-                 $template = ADMIN_TEMPLATE;
-             }
-
-             // полный путь к шаблону
-             $path = $template . explode('controller', strtolower($class->getShortName()))[0];
-         }
-
-         // Открываем буфер обмена
-         ob_start();
-
-         if(!@include_once $path . '.php')
-         {
-             throw new RouteException('Отсутствует шаблон - ' . $path);
-         }
-
-         // получаем из буфер то что там хранился
-         return ob_get_clean();
+        // получаем из буфер то что там хранился
+        return ob_get_clean();
 
     }
 
@@ -156,27 +135,6 @@ abstract class BaseController
     // Завершаем выполнения скрипта и при этом показываем страницу
     protected function getPage() // terminate
     {
-        /* exit($this->page); */
-
-        /**
-         * если массив
-         */
-        if(is_array($this->page))
-        {
-            foreach($this->page as $block)
-            {
-                echo $block;
-            }
-
-        }else{ // не массив, например строк ..
-
-            echo $this->page;
-        }
-
-        // завершим работа скрипта
-        exit();
+        exit($this->page);
     }
-
-
-
 }

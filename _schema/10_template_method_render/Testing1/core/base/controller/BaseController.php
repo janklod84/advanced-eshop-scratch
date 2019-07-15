@@ -3,8 +3,6 @@ namespace core\base\controller;
 
 
 use core\base\exceptions\RouteException;
-use core\base\settings\Settings;
-
 
 /**
  * Class BaseController
@@ -118,25 +116,8 @@ abstract class BaseController
 
          if(!$path)
          {
-             // класс Reflexion
-             $class = new \ReflectionClass($this);
-
-             // получаем постранство имен
-             $space  = str_replace('\\', '/', $class->getNamespaceName() . '\\');
-             $routes = Settings::get('routes');
-
-
-             if($space === $routes['user']['path'])
-             {
-                 $template = TEMPLATE;
-
-             }else{
-
-                 $template = ADMIN_TEMPLATE;
-             }
-
-             // полный путь к шаблону
-             $path = $template . explode('controller', strtolower($class->getShortName()))[0];
+             $reflectedClass = new \ReflectionClass($this);
+             $path = TEMPLATE . explode('controller', strtolower($reflectedClass->getShortName()))[0];
          }
 
          // Открываем буфер обмена
