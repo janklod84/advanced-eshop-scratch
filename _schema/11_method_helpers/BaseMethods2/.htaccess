@@ -17,15 +17,8 @@ DirectoryIndex index.php
 RewriteEngine on
 
 # Rules
-# Если то что у нас запросил пользователь не является файлом
+# Если то что у нас запросил пользователь не является файлом и папка
 RewriteCond %{REQUEST_FILENAME} !-f
-
-
-# Запретить сервер чтобы сопрашевал favicon с корнию сайта
-RewriteCond %{REQUEST_FILENAME} !favicon.ico
-
-
-# Если то что у нас запросил пользователь не является директории [папка]
 # RewriteCond %{REQUEST_FILENAME} !-d
 
 

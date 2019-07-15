@@ -4,6 +4,7 @@ namespace core\base\controller;
 
 use core\base\exceptions\RouteException;
 use core\base\settings\Settings;
+use core\base\settings\ShopSettings;
 use \Exception;
 
 
@@ -75,7 +76,7 @@ class RouteController extends BaseController
 
              if(!$this->routes)
              {
-                 throw new RouteException('Отсутствует маршруты в базовых настройках', 1);
+                 throw new RouteException('Сайт находится на техническом обслуживании');
              }
 
 
@@ -191,7 +192,14 @@ class RouteController extends BaseController
 
          }else{
 
-             throw new RouteException('Не корректная дирректория сайта', 1);
+             try
+             {
+                 throw new Exception('Не корректная дирректория сайта');
+
+             }catch (\Exception $e){
+
+                 exit($e->getMessage());
+             }
          }
 
      }
