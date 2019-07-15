@@ -21,8 +21,10 @@ use \Exception;
 class RouteController extends BaseController
 {
 
-    use Singleton;
-
+    /**
+     * @var RouteController $_instance
+     */
+     static private $_instance;
 
     /**
      * @var array $routes        [ all routes ]
@@ -30,6 +32,31 @@ class RouteController extends BaseController
      protected $routes;
 
 
+
+     /**
+      * Запришение создания копию объекта
+      *
+      * prevent to clone object
+     */
+     private function __clone() {}
+
+
+    /**
+     * Get instance
+     *
+     *
+     * @return self
+     * @throws Exception
+     */
+     static public function getInstance()
+     {
+         if(self::$_instance instanceof self)
+         {
+             return self::$_instance;
+         }
+
+         return self::$_instance = new self;
+     }
 
 
     /**

@@ -2,9 +2,7 @@
 namespace core\base\settings;
 
 
-use core\base\controller\Singleton;
 use core\base\settings\Settings;
-
 
 
 /**
@@ -15,14 +13,27 @@ use core\base\settings\Settings;
 class ShopSettings
 {
 
-    use Singleton;
-
     /**
+     * @var $_instance
      * @var $baseSettings
      */
+    static private $_instance;
     private $baseSettings;
 
 
+    /**
+     * @var array $routes
+     */
+    /*
+    private $routes = [
+        'admin' => [
+            'name' => 'sudo'
+        ],
+        'vasya' => [
+            'name' => 'vasya'
+        ]
+    ];
+    */
 
     /**
      * @var array $routes
@@ -53,24 +64,26 @@ class ShopSettings
      */
     static public function get($property)
     {
-        return self::getInstance()->{$property};
+        return self::instance()->{$property};
     }
 
 
     /**
      * @return self
      */
-    static private function getInstance()
+    static public function instance()
     {
         if(self::$_instance instanceof self)
         {
             return self::$_instance;
         }
 
+        self::$_instance = new self;
+
         // storage base settings
-        self::instance()->baseSettings = Settings::instance();
-        $baseProperties = self::instance()->baseSettings->clueProperties(get_class());
-        self::instance()->setProperty($baseProperties);
+        self::$_instance->baseSettings = Settings::instance();
+        $baseProperties = self::$_instance->baseSettings->clueProperties(get_class());
+        self::$_instance->setProperty($baseProperties);
 
         return self::$_instance;
     }
@@ -91,6 +104,22 @@ class ShopSettings
             }
         }
     }
+
+
+    /**
+     * Settings constructor.
+     *
+     * @return void
+     */
+    private function __construct() {}
+
+
+
+    /**
+     * prevent to copy/clone classe
+     */
+    private function __clone(){}
+
 
 
 }

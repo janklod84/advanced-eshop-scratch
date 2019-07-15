@@ -2,10 +2,6 @@
 namespace core\base\settings;
 
 
-use core\base\controller\Singleton;
-
-
-
 /**
  * Class Settings
  *
@@ -14,7 +10,10 @@ use core\base\controller\Singleton;
 class Settings
 {
 
-    use Singleton;
+    /**
+     * @var $_instance
+     */
+    static private $_instance;
 
 
     /**
@@ -55,6 +54,25 @@ class Settings
      ];
 
 
+     /* private $foo = 'foo'; */
+
+
+     /**
+      * Settings constructor.
+      *
+      * @return void
+     */
+     private function __construct()
+     {
+     }
+
+
+     /**
+      * prevent to copy/clone classe
+     */
+     private function __clone(){}
+
+
      /**
       * @return
      */
@@ -63,6 +81,18 @@ class Settings
          return self::instance()->{$property};
      }
 
+
+     /**
+      * @return self
+     */
+     static public function instance()
+     {
+         if(self::$_instance instanceof self)
+         {
+             return self::$_instance;
+         }
+         return self::$_instance = new self;
+     }
 
 
     /**

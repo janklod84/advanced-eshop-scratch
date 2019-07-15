@@ -23,14 +23,9 @@ abstract class BaseController
     /**
      * @var string $page
      * @var array  $errors
-     * @var array $styles
-     * @var array $scripts
      */
     protected $page;
     protected $errors;
-    protected $styles;
-    protected $scripts;
-
 
 
     /**
@@ -83,7 +78,6 @@ abstract class BaseController
 
     /**
      * @param array $args
-     * @throws \Exception
      */
     public  function request($args)
     {
@@ -109,7 +103,7 @@ abstract class BaseController
         // если в ошибке что то есть
         if($this->errors)
         {
-            $this->writeLog($this->errors);
+            $this->writeLog();
         }
 
         // Get Page [ Пулучаем страничку
@@ -187,59 +181,6 @@ abstract class BaseController
 
         // завершим работа скрипта
         exit();
-    }
-
-
-    /**
-     * Initialise all CSS, JS scripts
-     *
-     * @param $admin
-     *
-     */
-    public function init($admin = false)
-    {
-        if(!$admin)
-        {
-            // Add styles
-            if(USER_CSS_JS['styles'])
-            {
-                foreach (USER_CSS_JS['styles'] as $item)
-                {
-                    $this->styles[] = PATH. TEMPLATE . trim($item, '/');
-                }
-            }
-
-
-            // Add scripts
-            if(USER_CSS_JS['scripts'])
-            {
-                foreach (USER_CSS_JS['scripts'] as $item)
-                {
-                    $this->scripts[] = PATH. TEMPLATE . trim($item, '/');
-                }
-            }
-
-        } else {
-
-            // Add styles
-            if(ADMIN_CSS_JS['styles'])
-            {
-                foreach (ADMIN_CSS_JS['styles'] as $item)
-                {
-                    $this->styles[] = PATH. ADMIN_TEMPLATE . trim($item, '/');
-                }
-            }
-
-
-            // Add scripts
-            if(ADMIN_CSS_JS['scripts'])
-            {
-                foreach (ADMIN_CSS_JS['scripts'] as $item)
-                {
-                    $this->scripts[] = PATH. ADMIN_TEMPLATE . trim($item, '/');
-                }
-            }
-        }
     }
 
 

@@ -11,6 +11,65 @@ namespace core\base\controller;
 trait BaseMethods
 {
 
+    /**
+     * @var array $styles
+     * @var array $scripts
+     */
+    protected $styles;
+    protected $scripts;
+
+
+    /**
+     * Initialise all CSS, JS scripts
+     *
+     * @param $admin
+     *
+     */
+     public function init($admin = false)
+     {
+          if(!$admin)
+          {
+               // Add styles
+               if(USER_CSS_JS['styles'])
+               {
+                   foreach (USER_CSS_JS['styles'] as $item)
+                   {
+                       $this->styles[] = PATH. TEMPLATE . trim($item, '/');
+                   }
+               }
+
+
+              // Add scripts
+              if(USER_CSS_JS['scripts'])
+              {
+                  foreach (USER_CSS_JS['scripts'] as $item)
+                  {
+                      $this->scripts[] = PATH. TEMPLATE . trim($item, '/');
+                  }
+              }
+
+          } else {
+
+              // Add styles
+              if(ADMIN_CSS_JS['styles'])
+              {
+                  foreach (ADMIN_CSS_JS['styles'] as $item)
+                  {
+                      $this->styles[] = PATH. TEMPLATE . trim($item, '/');
+                  }
+              }
+
+
+              // Add scripts
+              if(ADMIN_CSS_JS['scripts'])
+              {
+                  foreach (ADMIN_CSS_JS['scripts'] as $item)
+                  {
+                      $this->scripts[] = PATH. TEMPLATE . trim($item, '/');
+                  }
+              }
+          }
+     }
 
 
     /**
