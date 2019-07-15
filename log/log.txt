@@ -1,0 +1,8 @@
+Fault: 15-07-2019 19:42:07 - Не верное имя файла для подключения - core/admin/controller/DddController
+file D:\OSPanel\domains\shop.loc\core\base\settings\internal_settings.php
+In line 77
+
+Fault: 15-07-2019 19:42:07 - Class core\admin\controller\DddController does not exist
+file D:\OSPanel\domains\shop.loc\core\base\controller\BaseController.php
+In line 78
+
